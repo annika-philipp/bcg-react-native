@@ -1,2 +1,2 @@
 # bcg-react-native
-rewriting my existing react/redux game using React Native
+I am teaching myself React Native. I am doing so by rewriting my existing react/redux game (bcg-redux) with React Native.
