@@ -6,14 +6,16 @@ class MainScreen extends React.Component {
   static navigationOptions = () => ({
     title: 'bcg-3000',
     headerStyle: {
-      height: Platform.OS === 'android' ? 54 + STATUS_BAR_HEIGHT : 54,
-      backgroundColor: '#2196F3'
+      height: Platform.OS === 'android' ? 24 + STATUS_BAR_HEIGHT : 54,
+      backgroundColor: '#ed961c'
     },
     headerTitleStyle: {
       marginTop: Platform.OS === 'android' ? STATUS_BAR_HEIGHT : 0,
-      color: 'white'
-    },
-    headerLeft: <View><Text>I</Text></View>
+      color: 'white',
+      marginBottom: 20,
+      marginLeft: 'auto',
+      marginRight: 'auto'
+    }
   })
 
   render () {
