@@ -3,10 +3,21 @@ import {
   View, 
   Text,
   TouchableOpacity,
-  StyleSheet 
+  StyleSheet,
+  Dimensions 
   } from 'react-native'
+import { connect } from 'react-redux'
+  
+
+const SCREEN_WIDTH = Dimensions.get('window').width  
 
 class Display extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      gamePlaying: true
+    }
+  }
   render () {
     return (
       <View style={styles.container}>
@@ -42,7 +53,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 330,
+    width: SCREEN_WIDTH * 0.9,
     height: 150,
     paddingVertical: 15,
     paddingHorizontal: 10,
@@ -56,7 +67,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: '#bfbab3',
-    width: 330,
+    width: SCREEN_WIDTH * 0.9,
     paddingVertical: 15,
     paddingHorizontal: 15,
     borderWidth: 1,
@@ -68,4 +79,12 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Display
+function mapStateToProps (state) {
+  return {
+    questions: state.questions,
+    index: state.index,
+    score: state.score
+  }
+}
+
+export default connect(mapStateToProps)(Display)
