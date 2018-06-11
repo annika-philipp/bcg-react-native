@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Platform, Text } from 'react-native'
+import { View, Platform } from 'react-native'
 import { STATUS_BAR_HEIGHT } from '../constants'
 
 class MainScreen extends React.Component {
