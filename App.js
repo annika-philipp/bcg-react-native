@@ -9,7 +9,6 @@ import MainScreen from './screens/MainScreen'
 // import {createStore, applyMiddleware, compose} from 'redux'
 // import thunkMiddleware from 'redux-thunk'
 
-// import Display from './components/Display'
 
 export default class App extends React.Component {
   render () {

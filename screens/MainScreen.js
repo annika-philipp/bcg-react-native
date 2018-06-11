@@ -1,6 +1,8 @@
 import React from 'react'
 import { View, Platform } from 'react-native'
 import { STATUS_BAR_HEIGHT } from '../constants'
+import Display from '../components/Display'
+
 
 class MainScreen extends React.Component {
   static navigationOptions = () => ({
@@ -21,6 +23,7 @@ class MainScreen extends React.Component {
   render () {
     return (
       <View style={{ flex: 1, backgroundColor: '#ddd'}} >
+        <Display />
       </View>
     )
   }
