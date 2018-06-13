@@ -7,6 +7,7 @@ import {
   Dimensions 
   } from 'react-native'
 import { connect } from 'react-redux'
+import {fetchQuestions} from '../redux/actions/questions'
   
 
 const SCREEN_WIDTH = Dimensions.get('window').width  
@@ -18,15 +19,22 @@ class Display extends React.Component {
       gamePlaying: true
     }
   }
+
+  componentDidMount(){
+    console.log("made it here")
+    this.props.dispatch(fetchQuestions())
+  }
   render () {
+    // const question = this.props.questions[0]
     return (
       <View style={styles.container}>
         <Text style={styles.score}>
           score:
         </Text>
-        <TouchableOpacity style={styles.displayContainer}>
+        <View style={styles.displayContainer}>
           <Text style={styles.questionText}>First day of bootcamp and you feel...</Text>
-        </TouchableOpacity>
+          {/* <Text style={styles.questionText}>{question.question}</Text> */}
+        </View>
         <TouchableOpacity style={styles.buttonContainer}>
           <Text style={styles.buttonText}>Excited</Text>
         </TouchableOpacity>
@@ -35,7 +43,7 @@ class Display extends React.Component {
         </TouchableOpacity>
       </View>
     )
-  }
+  } 
 }
 
 const styles = StyleSheet.create({
