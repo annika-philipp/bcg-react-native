@@ -1,14 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
-
-// import store from './store'
-import MainScreen from './screens/MainScreen'
-
 import { Provider } from 'react-redux'
 import {createStore, applyMiddleware, compose} from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
+import MainScreen from './screens/MainScreen'
 import reducers from './redux/reducers'
 
 let store = createStore(reducers, compose(
@@ -20,9 +17,6 @@ class App extends React.Component {
     const MainNavigator = createStackNavigator ({
       Main: { screen: MainScreen }
     })
-
-
-
     return (
       <Provider store={store}>
         <MainNavigator />
