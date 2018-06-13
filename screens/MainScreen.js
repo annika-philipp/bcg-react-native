@@ -1,7 +1,10 @@
 import React from 'react'
 import { View, Platform } from 'react-native'
 import { STATUS_BAR_HEIGHT } from '../constants'
+import { connect } from 'react-redux'
+
 import Display from '../components/Display'
+import Welcome from '../components/Welcome'
 
 
 class MainScreen extends React.Component {
@@ -21,12 +24,19 @@ class MainScreen extends React.Component {
   })
 
   render () {
+    console.log(this.props.location)
     return (
       <View style={{ flex: 1, backgroundColor: '#ddd'}} >
-        <Display />
+        {this.props.location === 'welcome' ? <Welcome /> : <Display />}
       </View>
     )
   }
 }
 
-export default MainScreen
+function mapStateToProps (state) {
+  return {
+    location: state.location
+  }
+}
+
+export default connect(mapStateToProps)(MainScreen)
