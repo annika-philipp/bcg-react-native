@@ -1,4 +1,4 @@
-import request from 'superagent'
+import request from '../../api/api'
 
 export function receiveQuestions (questionsarray) {
   return {
@@ -9,8 +9,7 @@ export function receiveQuestions (questionsarray) {
 
 export function fetchQuestions () {
   return (dispatch) => {
-    return request
-      .get('/api/questions')
+    return request ('get', 'api/questions')
       .then(res => {
         dispatch(receiveQuestions(res.body))
       })
@@ -33,3 +32,30 @@ export function showError (message) {
     message
   }
 }
+
+// export function fetchQuestions () {
+//   console.log("enter the fetch")
+//   return fetch('https://bcg-redux.herokuapp.com/api/questions')
+//       .then((response) => response.json())
+//       .then((responseJson) => {
+//         console.log("responseJSON ", responseJSON)
+//         dispatch(receiveQuestions(responseJson.body))
+//       })
+//       .catch((error) =>{
+//         console.error(error);
+//       })
+
+    
+//     }
+
+// fetch('https://bcg-redux.herokuapp.com/api/questions', {
+//   method: 'POST',
+//   headers: {
+//     Accept: 'application/json',
+//     'Content-Type': 'application/json',
+//   },
+//   body: JSON.stringify({
+//     firstParam: 'yourValue',
+//     secondParam: 'yourOtherValue',
+//   }),
+// });
