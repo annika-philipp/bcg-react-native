@@ -36,7 +36,7 @@ class AddScore extends React.Component {
   // }
 
   playAgain() {
-    this.props.dispatch(reset)
+    this.props.dispatch(reset())
     this.props.dispatch(navigate('welcome'))
   }
 
