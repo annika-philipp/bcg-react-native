@@ -7,8 +7,9 @@ import {
   Dimensions 
   } from 'react-native'
 import { connect } from 'react-redux'
-import {fetchQuestions} from '../redux/actions/questions'
-  
+import {fetchQuestions, increaseIndex} from '../redux/actions/questions'
+import {isTopScore, scoreIncreased, addToTotalscore, isPositiveTotalscore} from '../redux/actions/score'
+import GameOver from './GameOver'  
 
 const SCREEN_WIDTH = Dimensions.get('window').width  
 
@@ -20,28 +21,54 @@ class Display extends React.Component {
     }
   }
 
+  componentWillReceiveProps (nextProps) {
+    var totalScoreCheck = nextProps.score.isPositiveTotalScore
+    this.setState({
+      gamePlaying: totalScoreCheck
+    })
+  }
+
   componentDidMount(){
     console.log("made it here")
     this.props.dispatch(fetchQuestions())
   }
+
+  updateIndex (scoreValue) {
+    if (this.props.index == this.props.questions.length - 1) {
+      // this.props.dispatch(navigate('scoreboard'))
+      this.props.dispatch(isTopScore(this.props.score.totalScore))
+    }
+    else {
+      this.props.dispatch(scoreIncreased(scoreValue))
+      this.props.dispatch(increaseIndex(this.props.index))
+      this.props.dispatch(addToTotalscore(scoreValue))
+      this.props.dispatch(isPositiveTotalscore())
+    }
+  }
+
   render () {
-    // const question = this.props.questions[0]
+    var question = this.props.questions[this.props.index]
     return (
+      <View>
+      {this.state.gamePlaying 
+      ?
       <View style={styles.container}>
         <Text style={styles.score}>
-          score:
+          score: {this.props.questions.length > 0 && this.props.score.totalScore}
         </Text>
         <View style={styles.displayContainer}>
-          <Text style={styles.questionText}>First day of bootcamp and you feel...</Text>
-          {/* <Text style={styles.questionText}>{question.question}</Text> */}
+          <Text style={styles.questionText}>{this.props.questions.length > 0 && question.question}</Text>
         </View>
-        <TouchableOpacity style={styles.buttonContainer}>
-          <Text style={styles.buttonText}>Excited</Text>
+        <TouchableOpacity style={styles.buttonContainer} onPress={() => this.updateIndex(question.scores[0])}>
+          <Text style={styles.buttonText}>{this.props.questions.length > 0 && question.answers[0]}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonContainer}>
-          <Text style={styles.buttonText}>Bootcamp, I did not sign up for this!</Text>
+        <TouchableOpacity style={styles.buttonContainer} onPress={() => this.updateIndex(question.scores[1])}>
+          <Text style={styles.buttonText}>{this.props.questions.length > 0 && question.answers[1]}</Text>
         </TouchableOpacity>
       </View>
+      : <GameOver />}
+      </View>
+      
     )
   } 
 }
