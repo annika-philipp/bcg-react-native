@@ -37,7 +37,8 @@ class Display extends React.Component {
   updateIndex (scoreValue) {
     if (this.props.index == this.props.questions.length - 1) {
       this.props.dispatch(navigate('scoreboard'))
-      this.props.dispatch(isTopScore(this.props.score.totalScore))
+      // this.props.dispatch(isTopScore(this.props.score.totalScore))
+      // bring the above back in when connection established to score.json
     }
     else {
       this.props.dispatch(scoreIncreased(scoreValue))
