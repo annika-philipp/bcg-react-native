@@ -20,14 +20,14 @@ function GameOver (props) {
 
   return (
     <View style={styles.container}> 
-        <View style={styles.gameoverContainer}>
-          <Text style={styles.gameoverText}>GAME OVER</Text>
-          <Text style={styles.gameoverText}>Consult your nearest handbook...</Text>
-        </View>
-        <TouchableOpacity style={styles.buttonContainer} onPress={playAgain}>
-          <Text style={styles.buttonText}>Play again</Text>
-        </TouchableOpacity>
+      <View style={styles.gameoverContainer}>
+        <Text style={styles.gameoverText}>GAME OVER</Text>
+        <Text style={styles.gameoverText}>Consult your nearest handbook...</Text>
       </View>
+      <TouchableOpacity style={styles.buttonContainer} onPress={playAgain}>
+        <Text style={styles.buttonText}>Play again</Text>
+      </TouchableOpacity>
+    </View>
   )
 }
 
