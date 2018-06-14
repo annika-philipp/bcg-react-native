@@ -8,6 +8,7 @@ import {
   } from 'react-native'
 import { connect } from 'react-redux'
 import {navigate} from '../redux/actions/navigate'
+import {reset} from '../redux/actions/score'
 
 const SCREEN_WIDTH = Dimensions.get('window').width  
 
