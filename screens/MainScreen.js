@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import Display from '../components/Display'
 import Welcome from '../components/Welcome'
+import AddScore from '../components/AddScore'
 
 
 class MainScreen extends React.Component {
@@ -27,7 +28,7 @@ class MainScreen extends React.Component {
     console.log(this.props.location)
     return (
       <View style={{ flex: 1, backgroundColor: '#ddd'}} >
-        {this.props.location === 'welcome' ? <Welcome /> : <Display />}
+        {this.props.location === 'welcome' ? <Welcome /> : this.props.location === 'scoreboard' ? <AddScore /> : <Display />}
       </View>
     )
   }
