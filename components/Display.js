@@ -9,6 +9,7 @@ import {
 import { connect } from 'react-redux'
 import {fetchQuestions, increaseIndex} from '../redux/actions/questions'
 import {isTopScore, scoreIncreased, addToTotalscore, isPositiveTotalscore} from '../redux/actions/score'
+import {navigate} from '../redux/actions/navigate'
 import GameOver from './GameOver'  
 
 const SCREEN_WIDTH = Dimensions.get('window').width  
@@ -35,7 +36,7 @@ class Display extends React.Component {
 
   updateIndex (scoreValue) {
     if (this.props.index == this.props.questions.length - 1) {
-      // this.props.dispatch(navigate('scoreboard'))
+      this.props.dispatch(navigate('scoreboard'))
       this.props.dispatch(isTopScore(this.props.score.totalScore))
     }
     else {
