@@ -119,7 +119,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: 'center',
-    // textAlignVertical: 'center',
     fontWeight: '500',
     fontSize: 20,
     color: '#374443'
