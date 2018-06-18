@@ -12,7 +12,8 @@ import {isTopScore, scoreIncreased, addToTotalscore, isPositiveTotalscore} from 
 import {navigate} from '../redux/actions/navigate'
 import GameOver from './GameOver'  
 
-const SCREEN_WIDTH = Dimensions.get('window').width  
+const SCREEN_WIDTH = Dimensions.get('window').width
+const SCREEN_HEIGHT = Dimensions.get('window').height    
 
 class Display extends React.Component {
   constructor(props){
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: SCREEN_WIDTH * 0.9,
-    height: 150,
+    height: SCREEN_HEIGHT * 0.5,
     paddingVertical: 15,
     paddingHorizontal: 10,
     borderWidth: 1,
@@ -100,11 +101,17 @@ const styles = StyleSheet.create({
   questionText: {
     textAlign: 'center',
     fontWeight: '800',
-    color: 'white'
+    fontSize: 30,
+    color: 'white',
+    paddingLeft: 15,
+    paddingRight: 15
   },
   buttonContainer: {
     backgroundColor: '#bfbab3',
+    display: 'flex',
+    justifyContent: 'center',
     width: SCREEN_WIDTH * 0.9,
+    height: SCREEN_HEIGHT * 0.1,
     paddingVertical: 15,
     paddingHorizontal: 15,
     borderWidth: 1,
@@ -112,7 +119,10 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: 'center',
-    fontWeight: '700'
+    // textAlignVertical: 'center',
+    fontWeight: '500',
+    fontSize: 20,
+    color: '#374443'
   }
 })
 

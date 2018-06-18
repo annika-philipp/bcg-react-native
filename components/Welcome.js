@@ -10,13 +10,16 @@ import { connect } from 'react-redux'
 import {navigate} from '../redux/actions/navigate'
 import {reset} from '../redux/actions/score'
 
-const SCREEN_WIDTH = Dimensions.get('window').width  
+const SCREEN_WIDTH = Dimensions.get('window').width
+const SCREEN_HEIGHT = Dimensions.get('window').height    
 
 export const Welcome = (props) => {
     return (
       <View style={styles.container}> 
         <View style={styles.welcomeContainer}>
-          <Text style={styles.welcomeText}>Hello! You're here! Click this button!</Text>
+          <Text style={styles.welcomeText}>Hello!</Text>
+          <Text style={styles.welcomeText}>You're here!</Text>
+          <Text style={styles.welcomeText}>Click this button!</Text>
         </View>
         <TouchableOpacity style={styles.buttonContainer} onPress={() => props.dispatch(navigate('display'))}>
           <Text style={styles.buttonText}>Start Game</Text>
@@ -37,7 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: SCREEN_WIDTH * 0.9,
-    height: 150,
+    height: SCREEN_HEIGHT * 0.5,
     paddingVertical: 15,
     paddingHorizontal: 10,
     borderWidth: 1,
@@ -45,12 +48,16 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     textAlign: 'center',
-    fontWeight: '800',
+    fontWeight: '900',
+    fontSize: 40,
     color: 'white'
   },
   buttonContainer: {
     backgroundColor: '#bfbab3',
+    display: 'flex',
+    justifyContent: 'center',
     width: SCREEN_WIDTH * 0.9,
+    height: SCREEN_HEIGHT * 0.1,
     paddingVertical: 15,
     paddingHorizontal: 15,
     borderWidth: 1,
@@ -58,7 +65,9 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: 'center',
-    fontWeight: '700'
+    fontWeight: '700',
+    fontSize: 20,
+    color: '#374443'
   }
 })
 

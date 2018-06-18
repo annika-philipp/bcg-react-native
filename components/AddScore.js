@@ -11,6 +11,7 @@ import {addScoreApi, reset} from '../redux/actions/score'
 import {navigate} from '../redux/actions/navigate'
 
 const SCREEN_WIDTH = Dimensions.get('window').width
+const SCREEN_HEIGHT = Dimensions.get('window').height    
 
 class AddScore extends React.Component {
   constructor(props) {
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: SCREEN_WIDTH * 0.9,
-    height: 150,
+    height: SCREEN_HEIGHT * 0.5,
     paddingVertical: 15,
     paddingHorizontal: 10,
     borderWidth: 1,
@@ -77,16 +78,21 @@ const styles = StyleSheet.create({
   addscoreText: {
     textAlign: 'center',
     fontWeight: '800',
+    fontSize: 30,
     color: 'white'
   },
   highscoreText: {
     textAlign: 'center',
     fontWeight: '600',
+    fontSize: 25,
     color: 'white'
   },
   buttonContainer: {
     backgroundColor: '#bfbab3',
+    display: 'flex',
+    justifyContent: 'center',
     width: SCREEN_WIDTH * 0.9,
+    height: SCREEN_HEIGHT * 0.1,
     paddingVertical: 15,
     paddingHorizontal: 15,
     borderWidth: 1,
@@ -94,7 +100,9 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: 'center',
-    fontWeight: '700'
+    fontWeight: '700',
+    fontSize: 20,
+    color: '#374443'
   }
 })
 
